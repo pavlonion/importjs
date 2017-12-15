@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="ru-RU">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Тестирование виджета логина</title>
-<style>
-	body {
-		background-color: #0d5353;
-	}
-</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Тестирование виджета логина</title>
+	<style>
+		body {
+			background-color: #0d5353;
+		}
+	</style>
 </head>
 <body>
 	<style>
@@ -19,10 +19,9 @@
 	<div id="timer_place"></div>
 	<script>
 		document.addEventListener("timer_widget_ready", function(e) {
-			var timer = e.detail;
-			document.querySelector("#timer_place").appendChild(timer.element);
+			document.querySelector("#timer_place").appendChild(e.detail.element);
 		});
 	</script>
-	<script src="widget-loader.js"></script>
+	<script src="widget-loader.js?href=http://jsimporter.local/timer.html"></script>
 </body>
 </html>
