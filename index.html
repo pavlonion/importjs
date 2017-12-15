@@ -3,23 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Тестирование виджета логина</title>
-	<style>
-		body {
-			background-color: #0d5353;
-		}
-	</style>
+	<title>Timer widget import example</title>
 </head>
 <body>
-	<style>
-		.ui-dialog-titlebar-close {
-			min-height: 0px !important;
-		}
-	</style>
+	<h1>Timer widget import example</h1>
 	<div id="timer_place"></div>
 	<script>
 		document.addEventListener("timer_widget_ready", function(e) {
-			document.querySelector("#timer_place").appendChild(e.detail.element);
+			document.querySelector("#timer_place").appendChild(e.detail.widget);
 		});
 	</script>
 	<script src="widget-loader.js?href=http://jsimporter.local/timer.html"></script>

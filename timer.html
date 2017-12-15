@@ -2,12 +2,21 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<style>
+		#timer_widget {
+			color: #FFFFFF;
+			background-color: #0D5353;
+			display: inline-block;
+			padding: 20px;
+		}
+	</style>
 </head>
 <body>
-	<div>
-		Мой виджет!
-		<div id="timer">0</div>
+
+	<div id="timer_widget">
+		Timer: <span id="timer">0</span>
 	</div>
+
 	<script>
 	(function main() {
 		if (typeof window.CustomEvent != "function") {
@@ -38,13 +47,13 @@
 		var native_import_support = "import" in link;
 
 		function startup() {
-			var widget = link.import.querySelector("body div");
+			var widget = link.import.querySelector("body > div");
 			var timer = link.import.querySelector("#timer");
 			var interval = setInterval(function() { timer.innerHTML++; }, 1000);
 
 			document.dispatchEvent(new CustomEvent("timer_widget_ready", {
 				detail: {
-					element: widget,
+					widget: widget,
 					interval: interval
 				}
 			}));
