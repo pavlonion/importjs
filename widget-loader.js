@@ -2,30 +2,24 @@
 	function url_args(url) {
 		var a = document.createElement("a");
 		a.href = url;
-		var list = a.search.substr(1).split("=");
-		var l = list.length;
-		
+		var list = a.search.substr(1).split("&");
 		var args = {};
-		
-		if (l % 2) {
-			args[list[l]] = "";
-			--l;
-		}
-		
-		for (var i = 0; i < l; i+=2) {
-			var key = list[i];
-			var value = decodeURI(list[i + 1]);
+
+		for (var i = 0, l = list.length; i < l; i++) {
+			var pair = list[i].split("=");
+			var key = pair[0];
+			var value = decodeURI(pair[1] || "");
 			var type = typeof args[key];
-			
+
 			if (type == "undefined") {
 				args[key] = value;
 			} else if (type == "string") {
-				args[key] = [args[key]].push(value);
+				args[key] = [args[key]].concat(value);
 			} else {
 				args[key].push(value);
 			}
 		}
-		
+
 		return args;
 	}
 
