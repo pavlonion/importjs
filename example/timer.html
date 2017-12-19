@@ -10,6 +10,7 @@
 			padding: 20px;
 		}
 	</style>
+	<script src="https://cdn.rawgit.com/pavlonion/importjs/master/custom-event-polyfill.js"></script>
 </head>
 <body>
 
@@ -19,25 +20,6 @@
 
 	<script>
 	(function main() {
-		if (typeof window.CustomEvent != "function") {
-			window.CustomEvent = function(event, params) {
-				var default_params = { bubbles: false, cancelable: false, detail: undefined };
-
-				for (var key in default_params) {
-					if (typeof params[key] == "undefined") {
-						params[key] = default_params[key];
-					}
-				}
-
-				console.log(params);
-				var evt = document.createEvent("CustomEvent");
-				evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-				return evt;
-			}
-
-			window.CustomEvent.prototype = Object.create(window.Event.prototype);
-		}
-
 		var link = document.querySelector("link[rel=import][href$=\"timer.html\"]");
 		if (!link) {
 			console.warn("I'm a widget!");
