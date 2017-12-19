@@ -25,7 +25,7 @@
 
 	} else {
 		var script = document.createElement("script");
-		script.src = "webcomponents-lite.min.js";
+		script.src = "https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.21/webcomponents-hi.js";
 		script.async = true;
 		script.addEventListener("load", function() { 
 			startup(document._currentScript.src);			
