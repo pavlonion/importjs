@@ -1,5 +1,5 @@
-if (typeof window.CustomEvent != "function") {
-	window.CustomEvent = function(type, params) {
+if (typeof CustomEvent != "function") {
+	CustomEvent = function(type, params) {
 		var default_params = { bubbles: false, cancelable: false, detail: undefined };
 
 		if (typeof params != "object") {
@@ -18,5 +18,5 @@ if (typeof window.CustomEvent != "function") {
 		return event;
 	}
 
-	window.CustomEvent.prototype = Object.create(window.Event.prototype);
+	CustomEvent.prototype = Object.create(Event.prototype);
 }
