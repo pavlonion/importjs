@@ -2,9 +2,14 @@ if (typeof window.CustomEvent != "function") {
 	window.CustomEvent = function(type, params) {
 		var default_params = { bubbles: false, cancelable: false, detail: undefined };
 
-		for (var key in default_params) {
-			if (typeof params[key] == "undefined") {
-				params[key] = default_params[key];
+		if (typeof params != "object") {
+			params = default_params;
+
+		} else {
+			for (var key in default_params) {
+				if (typeof params[key] == "undefined") {
+					params[key] = default_params[key];
+				}
 			}
 		}
 
